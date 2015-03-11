@@ -23,7 +23,7 @@ for line in ratings:
 	Y[line[0]-1, line[1]-1] = int(line[2])
 
 #np.savetxt('miniproject2_data/rating_matrix.txt',Y,delimiter=',')
-def matrix_factorization(Mat,k,iterations=5000,lambd=0.02,ita=0.0002):
+def matrix_factorization(Mat,k,iterations=500,lambd=1000,ita=10):
 	M, N = Mat.shape
 	U = np.random.rand(M,k)
 	V = np.random.rand(k,N)
@@ -49,7 +49,7 @@ def matrix_factorization(Mat,k,iterations=5000,lambd=0.02,ita=0.0002):
 					for ik in xrange(k):
 						e = e + lambd/2*(pow(U[i][ik],2)+pow(V[ik][j],2))
 
-		if e < 0.001:
+		if e < 0.1:
 			break
 
 	return U, V
