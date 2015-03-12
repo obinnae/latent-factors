@@ -23,7 +23,7 @@ for line in ratings:
 	Y[line[0]-1, line[1]-1] = int(line[2])
 
 #np.savetxt('miniproject2_data/rating_matrix.txt',Y,delimiter=',')
-def matrix_factorization(Mat,k,iterations=500,lambd=1000,ita=10):
+def matrix_factorization(Mat,k,iterations=500,lambd=0.01,ita=0.1):
 	M, N = Mat.shape
 	U = np.random.rand(M,k)
 	V = np.random.rand(k,N)
