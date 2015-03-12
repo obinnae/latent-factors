@@ -2,8 +2,9 @@ from pyspark.mllib.recommendation import ALS
 from numpy import array
 
 # Load and parse the data
-data = sc.textFile("mllib/data/als/test.data")
-ratings = data.map(lambda line: array([float(x) for x in line.split(',')]))
+# data = sc.textFile("mllib/data/als/test.data")
+data = sc.textFile("data.txt")
+ratings = data.map(lambda line: array([float(x) for x in line.split('\t')]))
 
 # Build the recommendation model using Alternating Least Squares
 rank = 10
